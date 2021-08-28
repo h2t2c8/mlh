@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Avatar } from 'react-native-paper';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import * as Progress from 'react-native-progress';
 import { COLORS } from './../../Utils/Colors';
+import { useNavigation } from '@react-navigation/native';
 
 export default function TLL(props) {
  const [data, setData] = useState([]);
+ const navigation = useNavigation();
  useEffect(() => {
     (async () => { 
         setData([{   profilePic:'https://c.ndtvimg.com/2020-03/6qjpm0h8_narendra-modi-address-pti_625x300_19_March_20.jpg',
@@ -133,12 +135,15 @@ export default function TLL(props) {
                 </View>
             </View>
         </View>
+        <TouchableOpacity onPress={() => navigation.push('RLDetails', 
+        { profilePic: profilePic, userName: userName })}>
         <View style={styles.detailBtnView}>
             <View style={styles.detailBtnSubView}>
                 <Text style={styles.detailBtnText}>VIEW DETAILS</Text>
                 <FontAwesome5 name="arrow-right" style={styles.detailBtnIcon} size={16} />
             </View>
         </View>
+        </TouchableOpacity>
         </View>
     </View>);
  }
@@ -152,12 +157,14 @@ export default function TLL(props) {
                 console.log(info);
                 return <LLInfo key={index} index={index} data={info}/>
             })}
+            <TouchableOpacity onPress={() => navigation.push('RLFullDetails', { })}>
             <View style={styles.allDetailBtnView}>
                 <View style={styles.allDetailBtnSubView}>
                     <Text style={styles.allDetailBtnText}>VIEW COMPLETE INFORMATION</Text>
                     <FontAwesome5 name="arrow-right" style={styles.allDetailBtnIcon} size={16} />
                 </View>
             </View>
+            </TouchableOpacity>
             </View>
         </View>
     </View>:<View><Text>Loading ...</Text></View>);

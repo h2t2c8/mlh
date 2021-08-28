@@ -20,8 +20,8 @@ export default function Overview(props) {
 }
 
 const styles = StyleSheet.create({
-    overviewSection:{ flex: 10, flexDirection:'row' },
-    overviewSectionTab:{flex:2},
+ overviewSection:{ flex: 10, flexDirection:'row' },
+ overviewSectionTab:{flex:2},
  overviewSectionTitle:{textAlign:'center',marginTop:10,fontSize:13,fontWeight:'bold',textTransform:'uppercase',color:'#000'},
 
 });
