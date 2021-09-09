@@ -5,7 +5,7 @@ import Categories from './../Pages/Intro/Categories';
 import HomePage from '../Pages/HomePage';
 import RLDetails from '../Pages/Stacks/RLDetails';
 import RLFullDetails from '../Pages/Stacks/RLFullDetails';
-import PTDetails from '../Pages/Stacks/PTDetails';
+import PTDetails from '../Pages/Stacks/PublicTopics/PTDetails';
 import AppNavigator from './../Navigation/AppNavigator';
 
 const IntroStack = createStackNavigator();

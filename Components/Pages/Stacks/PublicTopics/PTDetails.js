@@ -1,79 +1,14 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, Dimensions, TouchableOpacity } from 'react-native';
+import { Alert, View, Text, Modal, StyleSheet, ScrollView, Dimensions, TouchableOpacity } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import * as Progress from 'react-native-progress';
-import { COLORS } from './../../Utils/Colors';
+import { COLORS } from './../../../Utils/Colors';
+import TopicStatistics from './PTDetailsModal';
 
 export default function PTDetails(){
     const route = useRoute();
-    const VoteSumary = (props) =>{
-        return (<View style={{flex:2,flexDirection:'row',marginTop:15,borderWidth:1,borderColor:'#ccc',borderRadius:8,backgroundColor:'#fff'}}>
-            <View style={{flex:1,borderRightWidth:1,borderRightColor:'#ccc'}}>
-                <Text style={{marginTop:15,paddingLeft:15,fontWeight:'bold',fontSize:14,paddingBottom:10,color:'#000'}}>Supporting Votes</Text>
-                <View style={{flexDirection:'row',marginBottom:20,justifyContent:'center'}}>
-                    <View style={{paddingTop:8}}>
-                        <Progress.Bar color='green' width={70} borderColor='green' progress={0.75} />
-                    </View>
-                    <View style={{paddingLeft:10}}>
-                        <Text style={{fontWeight:'bold',color:'green'}}>75% Votes</Text>
-                    </View>
-                </View>
-                <View style={{borderTopWidth:1,borderTopColor:'#ccc'}}>
-                    <View style={{padding:10}}>
-                        <Text style={{paddingLeft:5,color:'#000',fontSize:13,fontWeight:'bold'}}>Supporting People</Text>
-                        <Text style={{textAlign:'right',marginTop:5,color:'green',fontSize:16,fontWeight:'bold',color:'green'}}>1000</Text>
-                    </View>
-                </View>
-            </View>
-            <View style={{flex:1}}>
-                <Text style={{marginTop:15,paddingLeft:15,fontWeight:'bold',fontSize:14,paddingBottom:10,color:'#000'}}>Opposing Votes</Text>
-                <View style={{flexDirection:'row',marginBottom:20,justifyContent:'center'}}>
-                    <View style={{paddingTop:8}}>
-                        <Progress.Bar color='red' width={70} borderColor='red' progress={0.75} />
-                    </View>
-                    <View style={{paddingLeft:10}}>
-                        <Text style={{fontWeight:'bold',color:'red'}}>75% Votes</Text>
-                    </View>
-                </View>
-                <View style={{borderTopWidth:1,borderTopColor:'#ccc'}}>
-                    <View style={{padding:10}}>
-                        <Text style={{paddingLeft:5,color:'#000',fontSize:13,fontWeight:'bold'}}>Opposing People</Text>
-                        <Text style={{textAlign:'right',marginTop:5,color:'#777',fontSize:16,fontWeight:'bold',color:'green'}}>1000</Text>
-                    </View>
-                </View>
-            </View>
-        </View>);
-    }
-    const TopicSummary = (props) => {
-        return (<View>
-        <View style={styles.TopicSummaryOverview1}>
-        <View style={styles.row}>
-        <View style={styles.TopicSummaryInfoView1}>
-            <Text style={styles.TopicSummaryInfoLabel1}>NewsFeed Posted</Text>
-            <Text style={styles.TopicSummaryInfoValue}>0</Text>
-        </View>
-        <View style={styles.TopicSummaryInfoView2}>
-            <Text style={styles.TopicSummaryInfoLabel2}>Total People participated</Text>
-            <Text style={styles.TopicSummaryInfoValue}>{route.params.data.totalPeopleParticipated}</Text>
-        </View>
-        
-        </View>
-    </View>
-    <View style={styles.TopicSummaryOverview2}>
-        <View style={styles.row}>
-        <View style={styles.TopicSummaryInfoView1}>
-            <Text style={styles.TopicSummaryInfoLabel3}>Debates Posted</Text>
-            <Text style={styles.TopicSummaryInfoValue}>{route.params.data.debatesPosted}</Text>
-        </View>
-        <View style={styles.TopicSummaryInfoView2}>
-            <Text style={styles.TopicSummaryInfoLabel4}>Public Issues Created</Text>
-            <Text style={styles.TopicSummaryInfoValue}>{route.params.data.actions.total}</Text>
-        </View>
-        </View>
-    </View>
-    </View>);
-    }
+    const [topicVote, setTopicVote] = useState("");
    // topicTitle
    // totalPeopleParticipated 
    // debatesPosted:0, 
@@ -88,8 +23,8 @@ export default function PTDetails(){
         :(<TouchableOpacity onPress={()=>setTopicVote('OPPOSE')}><Text style={styles.btnGroupDefaultBtn2}>Oppose this Topic</Text></TouchableOpacity>)}
 </View>);
    };
-   const [topicVote, setTopicVote] = useState("");
-    return (<ScrollView style={styles.pTDetailsScrollView}>
+    return (<View>
+    <ScrollView style={styles.pTDetailsScrollView} keyboardShouldPersistTaps={'handled'}>
      <View style={styles.pTDetailsView}>
         <View>
             <Text style={styles.pTDetailsTitle}>{route.params.data.topicTitle}</Text>
@@ -104,12 +39,11 @@ export default function PTDetails(){
             </View>
         </View>
         <TopicVoteButtons topicVote={topicVote} />
-        <VoteSumary />
-        
-        <TopicSummary />
         
     </View>
-    </ScrollView>);
+    </ScrollView>
+    <TopicStatistics/>
+    </View>);
 }
 
 const styles = StyleSheet.create({
