@@ -45,14 +45,12 @@ export default function AppNavigator() {
         showLabel:false
       };
     return (
-        <NavigationContainer>
           <Tab.Navigator style={styles.TabNavigator}
             initialRouteName="HomeTab"
             screenOptions={screenOptions}
             tabBarOptions={tabBarOptions}>
                 <Tab.Screen name="HomeTab" component={DrawerNavigation} />
           </Tab.Navigator>
-        </NavigationContainer>
       );
 }
 

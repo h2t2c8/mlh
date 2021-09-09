@@ -1,12 +1,14 @@
 import React, { useState, useEffect  } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { COLORS } from './../../Utils/Colors';
 import * as Progress from 'react-native-progress';
+import { useNavigation } from '@react-navigation/native';
 
 export default function PI() {
     const [supportTopicData, setSupportTopicData] = useState([]);
     const [opposeTopicData, setOpposeTopicData] = useState([]);
+    const navigation = useNavigation();
     useEffect(() => {
         (async () => { 
             setSupportTopicData([{topicTitle:"Increasing Military Forces for National Security",
@@ -165,13 +167,14 @@ export default function PI() {
             </View>
 
             <BallotView voteBank={voteBank} />
-
+            <TouchableOpacity onPress={() => navigation.push('PTDetails',{ data:props.data })}>
             <View style={styles.detailBtnView}>
                 <View style={styles.detailBtnSubView}>
                     <Text style={styles.detailBtnText}>VIEW DETAILS</Text>
                     <FontAwesome5 name="arrow-right" style={styles.detailBtnIcon} size={16} />
                 </View>
             </View>
+            </TouchableOpacity>
         </View>
     </View>);
     };
@@ -230,12 +233,14 @@ export default function PI() {
 
             <BallotView voteBank={voteBank} />
 
+            <TouchableOpacity onPress={() => navigation.push('PTDetails',{data:props.data})}>
             <View style={styles.detailBtnView}>
                 <View style={styles.detailBtnSubView}>
                     <Text style={styles.detailBtnText}>VIEW DETAILS</Text>
                     <FontAwesome5 name="arrow-right" style={styles.detailBtnIcon} size={16} />
                 </View>
             </View>
+            </TouchableOpacity>
         </View>
     </View>);
     };

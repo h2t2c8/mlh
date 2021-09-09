@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import AppNavigator from './Components/Navigation/AppNavigator';
+import IntroStackScreen from './Components/Navigation/IntroStackScreen';
 import AppLoading from 'expo-app-loading';
 import { LogBox } from 'react-native';
 import { usePreventScreenCapture } from 'expo-screen-capture';
@@ -13,7 +13,7 @@ export default function App() {
     "BoogalooRegular": require('./assets/fonts/Boogaloo-Regular.otf'),
   });  
   // usePreventScreenCapture();
-  if(fontloaded){ console.log("In");return <AppNavigator /> } 
+  if(fontloaded){ console.log("In");return <IntroStackScreen /> } 
   else { console.log("Out");return <AppLoading /> }
 }
 
