@@ -39,7 +39,8 @@ export default function RLDetails() {
             </View>
         </View>
 
-        <View style={styles.mTop10}>
+        <View style={styles.contentBox}>
+        <View>
             <Text style={styles.profileSectionHeader}>About Me</Text>
             <Text style={styles.sectionText}>
                 Introduce yourself - Say about your background - from where you are, your ancestors.
@@ -77,7 +78,8 @@ export default function RLDetails() {
                 </Text>
         </View>
 
-        <View style={{flex:3,flexDirection:'row',marginTop:10,paddingTop:5,paddingBottom:5,borderWidth:1,borderColor:'#ccc',borderRadius:8,backgroundColor:'#eee'}}>
+        </View>
+        <View style={{flex:3,flexDirection:'row',marginTop:10,paddingTop:5,paddingBottom:5,borderWidth:1,borderColor:'#ccc',borderRadius:8,backgroundColor:'#fff'}}>
 
             <View style={{flex:1.2,padding:8}}>
                 <View style={{flexDirection:'row'}}>
@@ -111,12 +113,14 @@ export default function RLDetails() {
             </View>
         </View>
 		
-		<TouchableOpacity style={{alignSelf:'flex-end',marginTop:10,flexDirection:'row',borderRadius:8,padding:8,borderWidth:1,borderColor:'blue'}}>
-			<FontAwesome5 name="box-tissue" style={{color:'blue'}} size={16} />
-			<Text style={{paddingLeft:10,fontWeight:'bold',textAlign:'right',color:'blue'}}>
+		<TouchableOpacity style={{backgroundColor:'#fff',alignSelf:'flex-end',marginTop:10,flexDirection:'row',borderRadius:8,padding:8,borderWidth:1,borderColor:COLORS.DARK_VOILET}}>
+			<FontAwesome5 name="box-tissue" style={{color:COLORS.DARK_VOILET}} size={16} />
+			<Text style={{paddingLeft:10,fontWeight:'bold',textAlign:'right',color:COLORS.DARK_VOILET}}>
 			 Cast My Vote to Candidate
 			</Text>
 		</TouchableOpacity>
+
+        
 
         {/*<View style={{marginTop:15,marginLeft:-15}}>
         <AdMobBanner
@@ -126,7 +130,7 @@ export default function RLDetails() {
         </View> */}
         
 
-        <View style={{marginTop:25}}>
+        <View style={styles.contentBox}>
             <Text style={styles.profileSectionHeader}>My Political Topics</Text>
             <Text style={styles.sectionText}>I stand and support for -</Text>
             <View style={{flexDirection:'row',flexWrap:'wrap'}}>
@@ -148,7 +152,7 @@ export default function RLDetails() {
             </View>
         </View>
 
-        <View style={{marginTop:35}}>
+        <View style={styles.contentBox}>
           <Text style={styles.profileSectionHeader}>My Political Targets</Text>
           <Text style={styles.sectionText}>Mention the target / goal for which you are working for.</Text>
          
@@ -185,7 +189,7 @@ export default function RLDetails() {
             servePersonalizedAds/>
         </View> */}
 
-        <View style={{marginTop:35}}>
+        <View style={styles.contentBox}>
           <Text style={styles.profileSectionHeader}>Public Views on Candidate</Text>
         </View>
 
@@ -210,4 +214,6 @@ const styles = StyleSheet.create({
 
     spanLabelRed:{ marginTop:5,marginRight:10,fontWeight:'bold',alignSelf: 'flex-start',borderRadius:4, paddingLeft:8,paddingRight:8,paddingTop:5,paddingBottom:5,backgroundColor:'#b50541', color:'#fff',fontSize:12,lineHeight:14 },
     spanLabelGreen:{ marginTop:5,marginRight:10,fontWeight:'bold',alignSelf: 'flex-start',borderRadius:4, paddingLeft:8,paddingRight:8,paddingTop:5,paddingBottom:5,backgroundColor:'green', color:'#fff',fontSize:12,lineHeight:14 },
+    contentBox:{marginTop:10,borderRadius:8,borderWidth:1, borderColor:'#ccc', backgroundColor:'#fff', padding:15}
+
 });
